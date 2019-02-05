@@ -1,0 +1,22 @@
+// stylus中定义函数:border-1px:函数名,$color:是参数
+border-1px($color)
+  position: relative
+  //&表示与上面的是兄弟关系
+  &:after
+    display: block
+    position: absolute
+    left: 0
+    bottom: 0
+    width: 100%
+    border-top: 1px solid $color
+    content: ' '
+// 定义函数border-none
+border-none()
+  &:after
+    display: none
+// 定义函数bg-image,根据参数不同,得到不同的背景图片
+bg-image($url)
+  background-image: url($url + "@2x.png")
+  // 通过媒体查询在高清屏上显示大图片
+  @media (-webkit-min-device-pixel-ratio: 3),(min-device-pixel-ratio: 3)
+    background-image: url($url + "@3x.png")
